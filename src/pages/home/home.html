@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      GOVT eServices
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar color="primary">
+    <ion-searchbar (input)="getItems($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list *ngIf="items">
+    <ion-item *ngFor="let item of items">
+      <ion-avatar item-start>
+        <img [src]="item.imgSrc">
+      </ion-avatar>
+      <h2>{{item.title}}</h2>
+      <p>{{item.description}}</p>
+      <small class="text-muted">{{item.href}}</small>
+      <ion-note item-end><a [href]="item.href">Visit</a></ion-note>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab (click)="share()"> <ion-icon name="share"></ion-icon> </button>
+  </ion-fab>
+</ion-content>
